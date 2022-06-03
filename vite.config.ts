@@ -7,7 +7,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
     plugins: [react(), reactRefresh()],
     root: resolve("."),
-    build: { emptyOutDir: true, outDir: "./dist/renderer" },
+    build: { emptyOutDir: true, outDir: "./build/renderer" },
     base: "./",
     resolve: {
         alias: {

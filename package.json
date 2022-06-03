@@ -2,6 +2,16 @@
     "name": "electron-reactjs-app",
     "version": "0.1.0",
     "private": true,
+    "main": "build/electron/main.js",
+    "build": {
+        "extends": null,
+        "files": [
+            "build/**/*"
+        ],
+        "directories": {
+            "buildResources": "assets"
+        }
+    },
     "dependencies": {
         "@reduxjs/toolkit": "^1.8.2",
         "@testing-library/jest-dom": "^5.16.4",
@@ -17,8 +27,6 @@
         "antd": "^4.20.7",
         "axios": "^0.27.2",
         "connected-react-router": "^6.9.2",
-        "electron": "^19.0.2",
-        "electron-is-dev": "^2.0.0",
         "less": "^4.1.2",
         "moment": "^2.29.3",
         "postcss": "^8.4.14",
@@ -37,13 +45,18 @@
     "scripts": {
         "dev": "npm run electron:build && concurrently --kill-others 'vite --port 12800' 'APP_MODE=dev npm run electron:start'",
         "watch": "npm run electron:build && concurrently --kill-others 'vite --port 12800' 'APP_MODE=watch npm run electron:start'",
-        "start": "npm run renderer:build && npm run electron:build && npm run electron:start",
-        "clean": "rimraf ./dist",
+        "start": "npm run build && npm run electron:start",
+        "clean": "rimraf ./build && rimraf ./dist",
+        "build": "npm run renderer:build && npm run electron:build",
+        "dist:win:": "npm run build && electron-builder -w",
+        "dist:mac:": "npm run build && electron-builder -m",
         "renderer:start": "vite",
         "renderer:preview": "vite preview",
-        "renderer:build": "rimraf ./dist/rederer && vite build",
-        "electron:build": "rimraf ./dist/main && tsc --project ./electron/tsconfig.json",
-        "electron:start": "electron ./dist/main/main.js",
+        "renderer:build": "rimraf ./build/rederer && vite build",
+        "electron:build": "rimraf ./build/electron && tsc -p electron",
+        "electron:start": "electron ./build/main/main.js",
+        "builder:pack": "electron-builder --dir",
+        "builder:build": "electron-builder",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
@@ -66,9 +79,11 @@
         ]
     },
     "devDependencies": {
-        "@types/electron": "^1.6.10",
-        "concurrently": "^7.2.1",
         "electron-builder": "^23.0.3",
+        "@types/electron": "^1.6.10",
+        "electron": "^19.0.2",
+        "electron-is-dev": "^2.0.0",
+        "concurrently": "^7.2.1",
         "rimraf": "^3.0.2"
     }
 }
