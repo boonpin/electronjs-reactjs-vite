@@ -1,0 +1,21 @@
+{
+    //"extends": "../tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "CommonJS",
+        "sourceMap": false,
+        "isolatedModules": false,
+        "outDir": "../dist/main",
+        "baseUrl": ".",
+        "useDefineForClassFields": true,
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "Node",
+        "resolveJsonModule": true
+    },
+    "include": ["./"]
+}
