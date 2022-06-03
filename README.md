@@ -18,6 +18,11 @@ Simimlar with run dev, without showing the devTools
 
 run the app with load the static file (simulate real packed app)
 
-## TODO
+### `npm run dist:win/dist:mac`
 
-1. Electron Builder - Mac and Window
+build the app
+
+### `npm run dist:win/dist:mac`
+
+build the app
+
