@@ -1,5 +1,5 @@
 {
-    "name": "payrecon-multichat-desktop-app",
+    "name": "electron-reactjs-app",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
